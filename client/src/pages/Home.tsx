@@ -155,7 +155,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: '-80px' }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
               className="order-2 lg:order-1"
             >
@@ -178,7 +178,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: '-80px' }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
               className="order-1 lg:order-2"
             >
@@ -200,7 +200,7 @@ export default function Home() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: '-80px' }}
+            viewport={{ once: true, margin: '-80px' }}
             variants={fadeUp}
             className="max-w-3xl"
           >
@@ -215,7 +215,7 @@ export default function Home() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: '-80px' }}
+            viewport={{ once: true, margin: '-80px' }}
             variants={stagger}
             className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
           >
@@ -250,7 +250,7 @@ export default function Home() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             variants={fadeUp}
             className="mt-10"
           >
@@ -269,7 +269,7 @@ export default function Home() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, margin: '-60px' }}
+              viewport={{ once: true, margin: '-60px' }}
               variants={fadeUp}
               className="relative rounded-2xl overflow-hidden min-h-[420px] flex"
             >
@@ -307,7 +307,7 @@ export default function Home() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, margin: '-60px' }}
+              viewport={{ once: true, margin: '-60px' }}
               variants={fadeUp}
               className="rounded-2xl bg-primary text-white p-7 min-h-[420px]"
             >
@@ -331,7 +331,7 @@ export default function Home() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, margin: '-60px' }}
+              viewport={{ once: true, margin: '-60px' }}
               variants={fadeUp}
               className="relative rounded-2xl overflow-hidden min-h-[420px] flex"
             >
@@ -364,7 +364,7 @@ export default function Home() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: '-80px' }}
+            viewport={{ once: true, margin: '-80px' }}
             variants={fadeUp}
             className="max-w-3xl mb-12"
           >
@@ -375,7 +375,7 @@ export default function Home() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: '-60px' }}
+            viewport={{ once: true, margin: '-60px' }}
             variants={stagger}
             className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4"
           >
@@ -407,7 +407,7 @@ export default function Home() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: '-80px' }}
+            viewport={{ once: true, margin: '-80px' }}
             variants={fadeUp}
             className="section-heading mb-12"
           >
@@ -418,7 +418,7 @@ export default function Home() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: '-60px' }}
+            viewport={{ once: true, margin: '-60px' }}
             variants={stagger}
             className="grid grid-cols-1 sm:grid-cols-3 gap-4"
           >
@@ -451,7 +451,7 @@ export default function Home() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false }}
+          viewport={{ once: true }}
           variants={fadeUp}
           className="container mx-auto px-4 text-center"
         >

@@ -74,7 +74,7 @@ export default function Gallery() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: '-80px' }}
+            viewport={{ once: true, margin: '-80px' }}
             variants={fadeUp}
             className="max-w-3xl"
           >
@@ -91,7 +91,7 @@ export default function Gallery() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: '-60px' }}
+            viewport={{ once: true, margin: '-60px' }}
             variants={stagger}
             className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
           >

@@ -58,7 +58,7 @@ export default function About() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, margin: "-100px" }}
+              viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
             >
               <motion.h2 variants={fadeInUp} className="text-4xl font-merriweather font-bold mb-6">Who We Are</motion.h2>
@@ -121,7 +121,7 @@ export default function About() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, margin: "-80px" }}
+            viewport={{ once: true, margin: "-80px" }}
             variants={staggerContainer}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >

@@ -133,6 +133,8 @@
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Clip transient horizontal overflow from entrance animations (keeps sticky nav working) */
+    overflow-x: clip;
   }
   img {
     /* avoid layout flashes for the larger hero/section photos */
