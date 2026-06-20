@@ -1,9 +1,29 @@
+import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { useSEO } from '@/hooks/useSEO';
 
 export default function Services() {
+  useSEO({
+    title: 'Our Services',
+    description:
+      'Explore ESPEFAWIS services: supply chain solutions, asset management, agricultural consulting, training, market research, technology integration, and sustainability consulting.',
+    path: '/services',
+  });
+
+  // Scroll to a section when arriving via a hash link (e.g. /services#asset-management).
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      const el = document.getElementById(hash);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navigation />
@@ -13,27 +33,28 @@ export default function Services() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/hero-supply-chain-XVSupCHiAc92K7AEi9AuBE.webp)',
+            backgroundImage: 'url(/images/gallery/03_tractor_crop_field.webp)',
           }}
         >
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <h1 className="text-6xl font-merriweather font-bold drop-shadow-lg">Our Services</h1>
+          <h1 className="text-6xl font-merriweather font-bold drop-shadow-lg text-white">Our Services</h1>
           <p className="text-2xl mt-6 text-white font-light drop-shadow-md">Comprehensive solutions for agricultural excellence</p>
         </div>
       </section>
 
       {/* Supply Chain Solutions */}
-      <section className="py-20">
+      <section id="supply-chain" className="py-20 scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/service-supply-chain-RUSMkyBbb3gAmWact4q7xg.webp"
-                alt="Supply Chain Solutions"
-                className="rounded-lg shadow-lg"
+                src="/images/gallery/16_truck_fleet_logistics.webp"
+                alt="Packing harvested rice for distribution"
+                loading="lazy"
+                className="rounded-lg shadow-lg w-full object-cover aspect-[4/3]"
               />
             </div>
             <div>
@@ -67,7 +88,7 @@ export default function Services() {
       </section>
 
       {/* Asset Management */}
-      <section className="py-20 bg-gray-50">
+      <section id="asset-management" className="py-20 bg-gray-50 scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
@@ -98,9 +119,10 @@ export default function Services() {
             </div>
             <div className="order-1 md:order-2">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/service-asset-management-LgrKBNGAdNi9abdVmWB8y5.webp"
-                alt="Asset Management"
-                className="rounded-lg shadow-lg"
+                src="/images/gallery/05_livestock_cattle_field.webp"
+                alt="Livestock grazing — managed agricultural assets"
+                loading="lazy"
+                className="rounded-lg shadow-lg w-full object-cover aspect-[4/3]"
               />
             </div>
           </div>
@@ -108,7 +130,7 @@ export default function Services() {
       </section>
 
       {/* Additional Services */}
-      <section className="py-20">
+      <section id="additional-services" className="py-20 scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-merriweather font-bold mb-4">Additional Services</h2>
@@ -157,7 +179,7 @@ export default function Services() {
       <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-merriweather font-bold mb-6">Our Service Approach</h2>
+            <h2 className="text-5xl font-merriweather font-bold mb-6 text-white">Our Service Approach</h2>
             <p className="text-2xl text-white max-w-3xl mx-auto font-light leading-relaxed">
               We follow a structured, client-focused methodology to ensure successful implementation
             </p>

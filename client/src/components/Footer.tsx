@@ -41,6 +41,7 @@ export default function Footer() {
               <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
               <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link></li>
               <li><Link href="/services" className="text-gray-400 hover:text-white transition-colors">Services</Link></li>
+              <li><Link href="/gallery" className="text-gray-400 hover:text-white transition-colors">Gallery</Link></li>
               <li><Link href="/why-us" className="text-gray-400 hover:text-white transition-colors">Why Choose Us</Link></li>
               <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
             </ul>
@@ -50,10 +51,10 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Supply Chain Solutions</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Asset Management</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Agricultural Innovation</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Consulting Services</a></li>
+              <li><Link href="/services#supply-chain" className="text-gray-400 hover:text-white transition-colors">Supply Chain Solutions</Link></li>
+              <li><Link href="/services#asset-management" className="text-gray-400 hover:text-white transition-colors">Asset Management</Link></li>
+              <li><Link href="/services#additional-services" className="text-gray-400 hover:text-white transition-colors">Agricultural Innovation</Link></li>
+              <li><Link href="/services#additional-services" className="text-gray-400 hover:text-white transition-colors">Consulting Services</Link></li>
             </ul>
           </div>
 
@@ -81,9 +82,10 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <p>&copy; {currentYear} ESPEFAWIS Global Nig Ltd. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <div className="flex flex-wrap gap-6 mt-4 md:mt-0">
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+              <Link href="/cookies" className="hover:text-white transition-colors">Cookie Policy</Link>
             </div>
           </div>
         </div>

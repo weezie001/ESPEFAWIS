@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { useSEO } from '@/hooks/useSEO';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -20,6 +21,13 @@ const staggerContainer = {
 };
 
 export default function About() {
+  useSEO({
+    title: 'About Us',
+    description:
+      'Learn about ESPEFAWIS Global Nig Ltd — our mission, vision, and core values as a premier agro-allied and multi-sector solutions firm in Nigeria.',
+    path: '/about',
+  });
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navigation />
@@ -29,7 +37,7 @@ export default function About() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/hero-innovation-Jie5DJvVBR2FHahrQLomH6.webp)',
+            backgroundImage: 'url(/images/gallery/01_maize_field_sunrise.webp)',
           }}
         >
           <div className="absolute inset-0 bg-black/40"></div>
@@ -37,7 +45,7 @@ export default function About() {
 
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-            <motion.h1 variants={fadeInUp} className="text-6xl font-merriweather font-bold drop-shadow-lg">About ESPEFAWIS</motion.h1>
+            <motion.h1 variants={fadeInUp} className="text-6xl font-merriweather font-bold drop-shadow-lg text-white">About ESPEFAWIS</motion.h1>
             <motion.p variants={fadeInUp} className="text-2xl mt-6 text-white font-light drop-shadow-md">Our Journey, Mission, and Vision</motion.p>
           </motion.div>
         </div>
@@ -50,7 +58,7 @@ export default function About() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: false, margin: "-100px" }}
               variants={staggerContainer}
             >
               <motion.h2 variants={fadeInUp} className="text-4xl font-merriweather font-bold mb-6">Who We Are</motion.h2>
@@ -68,9 +76,10 @@ export default function About() {
             </motion.div>
             <div>
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/hero-sustainability-3fvfoHBNMAYfAtVeQyhbXr.webp"
-                alt="About ESPEFAWIS"
-                className="rounded-lg shadow-lg"
+                src="/images/gallery/25_seedling_in_hands.webp"
+                alt="ESPEFAWIS — nurturing crops in the field"
+                loading="lazy"
+                className="rounded-lg shadow-lg w-full object-cover aspect-[4/3]"
               />
             </div>
           </div>
@@ -109,39 +118,64 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: "-80px" }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {[
               {
                 title: 'Innovation',
+                image: '/images/gallery/18_supply_chain_dashboard_tablet.webp',
                 description: 'We continuously seek new technologies and methodologies to solve agricultural challenges and create competitive advantages for our clients.',
               },
               {
                 title: 'Integrity',
+                image: '/images/gallery/13_warehouse_partnership_handshake.webp',
                 description: 'We operate with transparency, honesty, and ethical standards in all our business dealings and partnerships.',
               },
               {
                 title: 'Excellence',
+                image: '/images/gallery/30_quality_guaranteed_produce.webp',
                 description: 'We maintain the highest standards of quality in our services, products, and professional conduct.',
               },
               {
                 title: 'Sustainability',
+                image: '/images/gallery/29_solar_powered_agriculture.webp',
                 description: 'We prioritize environmental responsibility and long-term viability in all our operations and recommendations.',
               },
               {
                 title: 'Partnership',
+                image: '/images/gallery/24_corporate_partnership_meeting.webp',
                 description: 'We believe in collaborative relationships that create mutual value and shared success with our clients and stakeholders.',
               },
               {
                 title: 'Impact',
+                image: '/images/gallery/26_farmer_cooperative_group.webp',
                 description: 'We measure success by the positive impact we create for farmers, businesses, and communities we serve.',
               },
             ].map((value, idx) => (
-              <div key={idx} className="card-hover bg-white p-8 rounded-lg shadow-sm border border-gray-100">
-                <h4 className="text-xl font-merriweather font-bold mb-3 text-primary">{value.title}</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
-              </div>
+              <motion.div
+                key={idx}
+                variants={fadeInUp}
+                className="card-hover bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col"
+              >
+                <div className="relative h-48 overflow-hidden group">
+                  <img
+                    src={value.image}
+                    alt={value.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  <h4 className="absolute bottom-4 left-5 text-xl font-merriweather font-bold text-white drop-shadow">{value.title}</h4>
+                </div>
+                <p className="text-gray-600 text-sm leading-relaxed p-6">{value.description}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -149,7 +183,7 @@ export default function About() {
       <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-merriweather font-bold mb-6">Why Choose ESPEFAWIS?</h2>
+            <h2 className="text-5xl font-merriweather font-bold mb-6 text-white">Why Choose ESPEFAWIS?</h2>
             <p className="text-2xl text-white max-w-3xl mx-auto font-light leading-relaxed">
               We combine deep industry expertise with innovative solutions to deliver measurable results
             </p>

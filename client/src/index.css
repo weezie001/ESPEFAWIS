@@ -125,9 +125,18 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  img {
+    /* avoid layout flashes for the larger hero/section photos */
+    background-color: var(--espefawis-neutral-gray);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
@@ -246,6 +255,29 @@
   
   .accent-line {
     @apply h-1 w-12 bg-accent rounded-full;
+  }
+
+  /* Legal pages (Privacy, Terms, Cookies) prose styling */
+  .legal-content h2 {
+    @apply text-2xl font-bold mt-10 mb-4 text-primary;
+  }
+  .legal-content h3 {
+    @apply text-xl font-bold mt-8 mb-3;
+  }
+  .legal-content p {
+    @apply text-gray-600 leading-relaxed mb-4;
+  }
+  .legal-content ul {
+    @apply list-disc pl-6 mb-4 space-y-2 text-gray-600;
+  }
+  .legal-content li {
+    @apply leading-relaxed;
+  }
+  .legal-content a {
+    @apply text-primary underline underline-offset-2 hover:opacity-80 transition-opacity;
+  }
+  .legal-content strong {
+    @apply text-gray-800 font-semibold;
   }
 
   @media (min-width: 640px) {

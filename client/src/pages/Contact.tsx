@@ -1,9 +1,22 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Facebook, Instagram, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram, Send, MessageCircle } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { useSEO } from '@/hooks/useSEO';
+
+// FormSubmit.co delivers submissions to this inbox (no API key required).
+// NOTE: the very first submission triggers a one-time activation email to this
+// address — click the link in it once to start receiving messages.
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/emmanuelenang17@gmail.com';
 
 export default function Contact() {
+  useSEO({
+    title: 'Contact Us',
+    description:
+      "Get in touch with ESPEFAWIS Global Nig Ltd. Send us a message, call, or chat on WhatsApp to discuss agro-allied solutions, supply chain, and asset management.",
+    path: '/contact',
+  });
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,40 +26,43 @@ export default function Contact() {
     message: '',
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus('sending');
 
-    // Without a backend mail service, compose the message in the visitor's
-    // email client and address it to the company inbox.
-    const subjectText = formData.subject
-      ? `Website enquiry: ${formData.subject}`
-      : 'Website enquiry';
-    const bodyLines = [
-      `Name: ${formData.name}`,
-      `Email: ${formData.email}`,
-      `Phone: ${formData.phone || '-'}`,
-      `Company: ${formData.company || '-'}`,
-      `Subject: ${formData.subject || '-'}`,
-      '',
-      formData.message,
-    ];
-    const mailtoUrl =
-      `mailto:info@espefawis.com` +
-      `?subject=${encodeURIComponent(subjectText)}` +
-      `&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || '-',
+          company: formData.company || '-',
+          subject: formData.subject || '-',
+          message: formData.message,
+          _subject: `Website enquiry${formData.subject ? `: ${formData.subject}` : ''}`,
+          _template: 'table',
+        }),
+      });
 
-    window.location.href = mailtoUrl;
-
-    setSubmitted(true);
-    setFormData({ name: '', email: '', phone: '', company: '', subject: '', message: '' });
-    setTimeout(() => setSubmitted(false), 5000);
+      if (res.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', company: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 8000);
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -58,7 +74,7 @@ export default function Contact() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/hero-sustainability-3fvfoHBNMAYfAtVeQyhbXr.webp)',
+            backgroundImage: 'url(/images/gallery/24_corporate_partnership_meeting.webp)',
           }}
         >
           <div className="absolute inset-0 bg-black/40"></div>
@@ -73,30 +89,46 @@ export default function Contact() {
       {/* Contact Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {[
               {
                 icon: Mail,
                 title: 'Email',
                 content: 'info@espefawis.com',
                 link: 'mailto:info@espefawis.com',
+                external: false,
               },
               {
                 icon: Phone,
                 title: 'Phone',
                 content: '07037785676',
                 link: 'tel:07037785676',
+                external: false,
+              },
+              {
+                icon: MessageCircle,
+                title: 'WhatsApp',
+                content: 'Chat with us',
+                link: 'https://wa.me/2347037785676',
+                external: true,
               },
               {
                 icon: MapPin,
                 title: 'Location',
                 content: 'Nigeria',
                 link: '#',
+                external: false,
               },
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <a key={idx} href={item.link} className="card-hover bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center no-underline">
+                <a
+                  key={idx}
+                  href={item.link}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                  className="card-hover bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center no-underline"
+                >
                   <div className="mb-4 inline-block p-4 bg-primary/10 rounded-lg">
                     <Icon size={32} className="text-primary" />
                   </div>
@@ -112,10 +144,17 @@ export default function Contact() {
             <div>
               <h2 className="text-3xl font-merriweather font-bold mb-8">Send us a Message</h2>
 
-              {submitted && (
+              {status === 'success' && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-green-800 font-semibold">Thank you! Your email app should now be open with your message ready to send.</p>
-                  <p className="text-green-700 text-sm">If it didn't open, email us directly at info@espefawis.com and we'll get back to you as soon as possible.</p>
+                  <p className="text-green-800 font-semibold">Thank you! Your message has been sent.</p>
+                  <p className="text-green-700 text-sm">We'll get back to you within 24 business hours.</p>
+                </div>
+              )}
+
+              {status === 'error' && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-red-800 font-semibold">Sorry, something went wrong.</p>
+                  <p className="text-red-700 text-sm">Please try again, or email us directly at info@espefawis.com.</p>
                 </div>
               )}
 
@@ -222,9 +261,10 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="btn-primary w-full justify-center"
+                  disabled={status === 'sending'}
+                  className="btn-primary w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message <Send size={18} />
+                  {status === 'sending' ? 'Sending…' : <>Send Message <Send size={18} /></>}
                 </button>
               </form>
             </div>

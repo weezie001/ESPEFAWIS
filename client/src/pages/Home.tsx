@@ -1,320 +1,469 @@
 import { Link } from 'wouter';
-import { ArrowRight, Leaf, Zap, Shield, TrendingUp } from 'lucide-react';
+import {
+  ArrowRight,
+  CheckCircle2,
+  Sprout,
+  Truck,
+  Warehouse,
+  ShieldCheck,
+  Store,
+  Handshake,
+} from 'lucide-react';
 import { motion } from 'framer-motion';
-import useEmblaCarousel from 'embla-carousel-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { useSEO } from '@/hooks/useSEO';
 
-const galleryImages = [
-  'https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/hero-supply-chain-XVSupCHiAc92K7AEi9AuBE.webp',
-  'https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/service-supply-chain-RUSMkyBbb3gAmWact4q7xg.webp',
-  'https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/service-asset-management-LgrKBNGAdNi9abdVmWB8y5.webp',
-  'https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?q=80&w=1000&auto=format&fit=crop',
+const fadeUp = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
+const stagger = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
+};
+
+const services = [
+  {
+    icon: Sprout,
+    img: '/images/gallery/02_farmer_harvest_basket.webp',
+    title: 'Procurement & Sourcing',
+    desc: 'We help you source quality commodities directly from trusted farms at the best value.',
+  },
+  {
+    icon: Truck,
+    img: '/images/gallery/16_truck_fleet_logistics.webp',
+    title: 'Supply Chain Management',
+    desc: 'Efficient systems that ensure seamless movement, traceability, and on-time delivery.',
+  },
+  {
+    icon: Warehouse,
+    img: '/images/gallery/14_warehouse_storage_forklift.webp',
+    title: 'Warehousing & Storage',
+    desc: 'Safe, modern, and efficient storage that preserves quality at every stage.',
+  },
+  {
+    icon: ShieldCheck,
+    img: '/images/gallery/15_food_processing_quality_control.webp',
+    title: 'Quality Assurance & Control',
+    desc: 'We maintain rigorous standards and testing across the entire value chain.',
+  },
+  {
+    icon: Store,
+    img: '/images/gallery/22_port_terminal_containers.webp',
+    title: 'Market Access & Distribution',
+    desc: 'We connect your products to reliable local and global markets.',
+  },
 ];
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
+const commodities = [
+  { name: 'Grains', img: '/images/gallery/01_maize_field_sunrise.webp' },
+  { name: 'Rice', img: '/images/gallery/07_rice_grains_closeup.webp' },
+  { name: 'Maize', img: '/images/gallery/08_maize_kernels_closeup.webp' },
+  { name: 'Cassava', img: '/images/gallery/09_cassava_roots_closeup.webp' },
+  { name: 'Sesame', img: '/images/gallery/10_sesame_seeds_closeup.webp' },
+  { name: 'Cocoa', img: '/images/gallery/11_cocoa_pods_beans_closeup.webp' },
+  { name: 'Cashew', img: '/images/gallery/12_cashew_nuts_closeup.webp' },
+  { name: 'Livestock', img: '/images/gallery/05_livestock_cattle_field.webp' },
+  { name: 'Vegetables', img: '/images/gallery/06_fresh_vegetables_assortment.webp' },
+  { name: 'Fruits', img: '/images/gallery/30_quality_guaranteed_produce.webp' },
+  { name: 'Processed Food', img: '/images/gallery/15_food_processing_quality_control.webp' },
+  { name: 'General Commodities', img: '/images/gallery/04_cocoa_cashew_commodities.webp' },
+];
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
+const operations = [
+  { img: '/images/ops-farmer.webp', label: 'Farming' },
+  { img: '/images/ops-tractor.webp', label: 'Cultivation' },
+  { img: '/images/ops-processing.webp', label: 'Processing' },
+  { img: '/images/ops-warehouse.webp', label: 'Warehousing' },
+  { img: '/images/ops-truck.webp', label: 'Logistics' },
+  { img: '/images/ops-port.webp', label: 'Export' },
+  { img: '/images/ops-market.webp', label: 'Market' },
+];
+
+// Featured 3 images shown on the homepage gallery preview.
+const homeGallery = [
+  { src: '/images/gallery/12_cashew_nuts_closeup.webp', alt: 'Close-up of cashew nuts' },
+  { src: '/images/gallery/30_quality_guaranteed_produce.webp', alt: 'Quality-guaranteed produce' },
+  { src: '/images/gallery/20_road_freight_delivery_truck.webp', alt: 'Courier delivery truck' },
+];
 
 export default function Home() {
-  const [emblaRef] = useEmblaCarousel({ loop: true });
+  useSEO({
+    title: 'Building Reliable Agro Supply Chains for Nigeria',
+    description:
+      'ESPEFAWIS Global Nig Ltd is a premier agro-allied and multi-sector solutions firm connecting Nigerian farmers to markets through integrated, sustainable supply chain solutions.',
+    path: '/',
+    image: 'https://www.espefawis.com/images/hero-main.webp',
+  });
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url(https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/hero-supply-chain-XVSupCHiAc92K7AEi9AuBE.webp)',
-            backgroundPosition: 'center',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/60"></div>
+      {/* ===== HERO ===== */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/images/hero-main.webp" alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/65" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 text-center text-white py-20">
-          <motion.div 
-            className="max-w-4xl mx-auto"
+        <div className="relative z-10 container mx-auto px-4 py-32 lg:py-48">
+          <motion.div
             initial="hidden"
             animate="visible"
-            variants={staggerContainer}
+            variants={stagger}
+            className="max-w-3xl mx-auto text-center text-white"
           >
-            <motion.h1 variants={fadeInUp} className="text-6xl md:text-8xl font-merriweather font-bold mb-6 leading-tight text-white drop-shadow-md">
-              Bridging Farm & Economy
+            <motion.h1
+              variants={fadeUp}
+              className="font-merriweather font-bold leading-[1.05] text-white drop-shadow-md text-5xl sm:text-6xl lg:text-7xl"
+            >
+              Building Reliable{' '}
+              <span className="text-[#5DC264]">Agro Supply Chains</span> for Nigeria
             </motion.h1>
-            <motion.h2 variants={fadeInUp} className="text-2xl md:text-3xl mb-12 text-white font-light leading-relaxed drop-shadow-sm">
-              Sustainable Agricultural Solutions for the Future
-            </motion.h2>
-            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-primary bg-white text-primary hover:bg-gray-100">
-                Get Started <ArrowRight size={20} />
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 mx-auto max-w-2xl text-xl text-gray-200 font-light leading-relaxed"
+            >
+              We connect farmers to markets through integrated supply chain solutions that drive
+              growth, reduce waste, and create lasting value.
+            </motion.p>
+            <motion.div variants={fadeUp} className="mt-9 flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/services" className="btn-primary justify-center shadow-lg">
+                Our Services <ArrowRight size={18} />
               </Link>
-              <Link href="/about" className="btn-secondary border-white text-white hover:bg-white hover:text-primary">
-                Learn More
+              <Link
+                href="/contact"
+                className="px-6 py-3 bg-white/95 text-primary font-semibold rounded-md inline-flex items-center justify-center gap-2 transition-all duration-200 hover:bg-white"
+              >
+                Partner With Us
               </Link>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
-      <section className="py-24 bg-primary text-white overflow-hidden">
+      {/* ===== ABOUT (below hero) ===== */}
+      <section className="py-20 lg:py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="max-w-5xl mx-auto text-center"
-          >
-            <h2 className="text-5xl md:text-6xl font-merriweather font-bold mb-10 text-white drop-shadow-sm">Who We Are</h2>
-            <div className="space-y-8">
-              <p className="text-2xl md:text-3xl text-gray-100 font-light leading-relaxed">
-                We are a premier agro-allied and multi sector solutions firm. Our mission is to bridge the gap between the farm and the wider economy. We combine innovation with nature, building supply chains that makes food security thrive.
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, margin: '-80px' }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
+              className="order-2 lg:order-1"
+            >
+              <span className="text-accent font-semibold tracking-wide text-sm uppercase">About Us</span>
+              <h2 className="mt-2 mb-5">Bridging the Gap Between the Farm and the Wider Economy</h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                ESPEFAWIS Global Nig Ltd is a premier agro-allied and multi-sector solutions firm
+                committed to transforming Nigeria's agricultural value chains through innovation,
+                integrity, and excellence.
               </p>
-              <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed max-w-4xl mx-auto">
-                With a future focused mindset, we provide reliable services that meet global standards, ensuring that whether we are growing crops and managing assets, we are cultivating long term value for our clients and our country.
+              <p className="text-gray-600 leading-relaxed mb-8">
+                From the farm to the wider economy, we build dependable supply chains that create
+                lasting value for farmers, businesses, and the communities we serve.
               </p>
-            </div>
-          </motion.div>
+              <Link href="/about" className="btn-primary">
+                Learn More <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, margin: '-80px' }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
+              className="order-1 lg:order-2"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/images/gallery/25_seedling_in_hands.webp"
+                  alt="Hands holding a young seedling in soil"
+                  className="w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Value Proposition */}
-      <section className="py-24 bg-gray-50 overflow-hidden">
+      {/* ===== SERVICES ===== */}
+      <section className="py-20 lg:py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="section-heading"
+            viewport={{ once: false, margin: '-80px' }}
+            variants={fadeUp}
+            className="max-w-3xl"
           >
-            <h2>Our Core Values</h2>
-            <p>Combining innovation with nature to create sustainable solutions</p>
+            <span className="text-accent font-semibold uppercase tracking-wide text-sm">Our Services</span>
+            <h2 className="mt-2 mb-4">End-to-End Agro Supply Chain Solutions</h2>
+            <p className="text-lg text-muted-foreground">
+              We design and implement smart, sustainable, and scalable solutions that connect every
+              part of the agricultural value chain.
+            </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-4 gap-8"
+            viewport={{ once: false, margin: '-80px' }}
+            variants={stagger}
+            className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
           >
-            {[
-              {
-                icon: Leaf,
-                title: 'Sustainability',
-                description: 'Cultivating practices that ensure long-term environmental and economic viability.',
-              },
-              {
-                icon: Zap,
-                title: 'Innovation',
-                description: 'Leveraging cutting-edge technology to solve agricultural challenges.',
-              },
-              {
-                icon: Shield,
-                title: 'Reliability',
-                description: 'Meeting global standards with consistent, dependable service delivery.',
-              },
-              {
-                icon: TrendingUp,
-                title: 'Growth',
-                description: 'Creating value for clients and stakeholders through strategic partnerships.',
-              },
-            ].map((value, idx) => {
-              const Icon = value.icon;
+            {services.map((s) => {
+              const Icon = s.icon;
               return (
-                <motion.div variants={fadeInUp} key={idx} className="card-hover bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                  <div className="mb-4 inline-block p-3 bg-primary/10 rounded-lg">
-                    <Icon size={24} className="text-primary" />
+                <motion.div
+                  variants={fadeUp}
+                  key={s.title}
+                  className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                >
+                  <div className="relative h-40 overflow-hidden">
+                    <img
+                      src={s.img}
+                      alt={s.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute -bottom-5 left-5 w-11 h-11 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg">
+                      <Icon size={20} />
+                    </div>
                   </div>
-                  <h3 className="text-lg font-merriweather font-bold mb-3">{value.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{value.description}</p>
+                  <div className="p-5 pt-7">
+                    <h3 className="text-base font-merriweather font-bold mb-2 leading-snug">{s.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
+                  </div>
                 </motion.div>
               );
             })}
           </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={fadeUp}
+            className="mt-10"
+          >
+            <Link href="/services" className="btn-primary">
+              View All Services <ArrowRight size={18} />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="py-24 overflow-hidden">
+      {/* ===== FEATURE BAND: Why / Commodities / Partnership ===== */}
+      <section className="py-20 lg:py-24 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Why Choose */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, margin: '-60px' }}
+              variants={fadeUp}
+              className="relative rounded-2xl overflow-hidden min-h-[420px] flex"
+            >
+              <img src="/images/gallery/26_farmer_cooperative_group.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/45" />
+              <div className="relative z-10 p-7 flex flex-col justify-end text-white">
+                <span className="text-[#9FE6A8] font-semibold uppercase tracking-wide text-xs">Why Choose ESPEFAWIS</span>
+                <h3 className="text-2xl font-merriweather font-bold mt-2 mb-4 text-white">
+                  Your Trusted Partner in Agro Supply Chain Solutions
+                </h3>
+                <ul className="space-y-2.5 mb-6">
+                  {[
+                    'Proven expertise in agro-allied solutions',
+                    'Integrated end-to-end supply chain systems',
+                    'Commitment to quality, innovation & sustainability',
+                    'Strong network of partners and stakeholders',
+                    'Focused on long-term value and impact',
+                  ].map((item) => (
+                    <li key={item} className="flex gap-2.5 items-start text-sm text-gray-100">
+                      <CheckCircle2 size={18} className="text-[#5DC264] flex-shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/why-us"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-primary font-semibold rounded-md w-fit hover:bg-gray-100 transition-colors"
+                >
+                  Why Us <ArrowRight size={16} />
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Commodities */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, margin: '-60px' }}
+              variants={fadeUp}
+              className="rounded-2xl bg-primary text-white p-7 min-h-[420px]"
+            >
+              <span className="text-[#9FE6A8] font-semibold uppercase tracking-wide text-xs">Commodities We Handle</span>
+              <h3 className="text-2xl font-merriweather font-bold mt-2 mb-6 text-white">
+                Quality Commodities, Reliable Supply
+              </h3>
+              <div className="grid grid-cols-4 gap-x-3 gap-y-5">
+                {commodities.map((c) => (
+                  <div key={c.name} className="flex flex-col items-center text-center">
+                    <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-white/30 shadow-md">
+                      <img src={c.img} alt={c.name} loading="lazy" className="w-full h-full object-cover" />
+                    </div>
+                    <span className="mt-1.5 text-[11px] leading-tight text-gray-100">{c.name}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Partnerships */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, margin: '-60px' }}
+              variants={fadeUp}
+              className="relative rounded-2xl overflow-hidden min-h-[420px] flex"
+            >
+              <img src="/images/gallery/24_corporate_partnership_meeting.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/45" />
+              <div className="relative z-10 p-7 flex flex-col justify-end text-white">
+                <span className="text-[#9FE6A8] font-semibold uppercase tracking-wide text-xs">Partnerships</span>
+                <h3 className="text-2xl font-merriweather font-bold mt-2 mb-4 text-white">
+                  Building Strong Relationships for Sustainable Growth
+                </h3>
+                <p className="text-sm text-gray-100 leading-relaxed mb-6">
+                  We work with government agencies, corporate organizations, exporters, processors,
+                  and development partners to build resilient and profitable agricultural value chains.
+                </p>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-white font-semibold rounded-md w-fit hover:opacity-90 transition-opacity"
+                >
+                  <Handshake size={16} /> Become a Partner
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== OPERATIONS STRIP ===== */}
+      <section className="py-20 lg:py-24 bg-white overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
+            viewport={{ once: false, margin: '-80px' }}
+            variants={fadeUp}
+            className="max-w-3xl mb-12"
+          >
+            <span className="text-accent font-semibold uppercase tracking-wide text-sm">Our Operations</span>
+            <h2 className="mt-2">From Farm to Market, We Deliver Value</h2>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: '-60px' }}
+            variants={stagger}
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4"
+          >
+            {operations.map((op) => (
+              <motion.div
+                variants={fadeUp}
+                key={op.label}
+                className="group relative rounded-xl overflow-hidden aspect-[3/4] shadow-sm"
+              >
+                <img
+                  src={op.img}
+                  alt={op.label}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                <span className="absolute bottom-3 left-0 right-0 text-center text-white text-sm font-semibold">
+                  {op.label}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== GALLERY ===== */}
+      <section className="py-20 lg:py-24 bg-gray-50 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: '-80px' }}
+            variants={fadeUp}
             className="section-heading mb-12"
           >
             <h2>Our Gallery</h2>
-            <p>A glimpse into our operations and facilities</p>
+            <p>A closer look at our operations, facilities, and the value chain we power.</p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="overflow-hidden cursor-grab active:cursor-grabbing" 
-            ref={emblaRef}
+            viewport={{ once: false, margin: '-60px' }}
+            variants={stagger}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4"
           >
-            <div className="flex gap-4">
-              {galleryImages.map((src, idx) => (
-                <div key={idx} className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 pl-4">
-                  <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden group">
-                    <img
-                      src={src}
-                      alt={`Gallery image ${idx + 1}`}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500"></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Services Preview */}
-      <section className="py-24 bg-gray-50 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeInUp}
-            className="section-heading"
-          >
-            <h2>Our Services</h2>
-            <p>Comprehensive solutions tailored to meet your agro-allied and business needs</p>
+            {homeGallery.map((img) => (
+              <motion.div
+                variants={fadeUp}
+                key={img.src}
+                className="group relative rounded-xl overflow-hidden aspect-[4/3] shadow-sm"
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-500" />
+              </motion.div>
+            ))}
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/service-supply-chain-RUSMkyBbb3gAmWact4q7xg.webp"
-                  alt="Supply Chain Solutions"
-                  className="w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <h3 className="text-3xl font-merriweather font-bold mb-4">Supply Chain Solutions</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                We optimize agricultural supply chains from farm to market, ensuring efficiency, transparency, and maximum value retention. Our integrated approach manages logistics, storage, and distribution with precision.
-              </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex gap-3 items-start">
-                  <div className="w-2 h-2 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700">End-to-end supply chain management</span>
-                </li>
-                <li className="flex gap-3 items-start">
-                  <div className="w-2 h-2 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700">Logistics optimization and tracking</span>
-                </li>
-                <li className="flex gap-3 items-start">
-                  <div className="w-2 h-2 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700">Quality assurance and compliance</span>
-                </li>
-              </ul>
-              <Link href="/services" className="btn-primary inline-flex">
-                Explore Service <ArrowRight size={18} className="ml-2" />
-              </Link>
-            </motion.div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="order-2 md:order-1"
-            >
-              <h3 className="text-3xl font-merriweather font-bold mb-4">Asset Management</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Maximize the performance and longevity of your agricultural assets through intelligent tracking, maintenance scheduling, and optimization strategies. We ensure your equipment operates at peak efficiency.
-              </p>
-              <ul className="space-y-4 mb-8">
-                <li className="flex gap-3 items-start">
-                  <div className="w-2 h-2 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700">Real-time asset tracking and monitoring</span>
-                </li>
-                <li className="flex gap-3 items-start">
-                  <div className="w-2 h-2 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700">Predictive maintenance scheduling</span>
-                </li>
-                <li className="flex gap-3 items-start">
-                  <div className="w-2 h-2 bg-accent rounded-full mt-2.5 flex-shrink-0"></div>
-                  <span className="text-gray-700">Performance optimization and reporting</span>
-                </li>
-              </ul>
-              <Link href="/services" className="btn-primary inline-flex">
-                Explore Service <ArrowRight size={18} className="ml-2" />
-              </Link>
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="order-1 md:order-2"
-            >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663587645243/Ey3xhhhkNe26ssGz7PgGF7/service-asset-management-LgrKBNGAdNi9abdVmWB8y5.webp"
-                  alt="Asset Management"
-                  className="w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-            </motion.div>
+          <div className="text-center mt-10">
+            <Link href="/gallery" className="btn-primary">
+              View Full Gallery <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-primary text-white overflow-hidden">
-        <motion.div 
+      {/* ===== CTA ===== */}
+      <section className="py-20 lg:py-24 bg-primary text-white overflow-hidden">
+        <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
+          viewport={{ once: false }}
+          variants={fadeUp}
           className="container mx-auto px-4 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-merriweather font-bold mb-6">Ready to Transform Your Operations?</h2>
+          <h2 className="text-4xl md:text-5xl font-merriweather font-bold mb-6 text-white">
+            Ready to Transform Your Operations?
+          </h2>
           <p className="text-lg md:text-xl text-gray-100 mb-10 max-w-2xl mx-auto font-light">
-            Contact our team today to discuss how ESPEFAWIS can help you achieve sustainable growth and maximize value.
+            Contact our team today to discuss how ESPEFAWIS can help you achieve sustainable growth
+            and maximize value across your agricultural value chain.
           </p>
-          <Link href="/contact" className="inline-flex px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-            Get in Touch <ArrowRight size={20} className="inline ml-2" />
+          <Link
+            href="/contact"
+            className="inline-flex items-center px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+          >
+            Get in Touch <ArrowRight size={20} className="ml-2" />
           </Link>
         </motion.div>
       </section>
