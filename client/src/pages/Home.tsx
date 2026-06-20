@@ -95,7 +95,7 @@ export default function Home() {
     description:
       'ESPEFAWIS Global Nig Ltd is a premier agro-allied and multi-sector solutions firm connecting Nigerian farmers to markets through integrated, sustainable supply chain solutions.',
     path: '/',
-    image: 'https://www.espefawis.com/images/hero-main.webp',
+    image: 'https://www.espefawis.com/images/hero-desktop.webp',
   });
 
   return (
@@ -105,7 +105,10 @@ export default function Home() {
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/hero-main.webp" alt="" className="w-full h-full object-cover" />
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/images/hero-mobile.webp" />
+            <img src="/images/hero-desktop.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/65" />
         </div>
 
