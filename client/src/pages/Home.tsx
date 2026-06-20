@@ -58,7 +58,7 @@ const services = [
 ];
 
 const commodities = [
-  { name: 'Grains', img: '/images/gallery/01_maize_field_sunrise.webp' },
+  { name: 'Guinea Corn', img: '/images/gallery/01_maize_field_sunrise.webp' },
   { name: 'Rice', img: '/images/gallery/07_rice_grains_closeup.webp' },
   { name: 'Maize', img: '/images/gallery/08_maize_kernels_closeup.webp' },
   { name: 'Cassava', img: '/images/gallery/09_cassava_roots_closeup.webp' },
