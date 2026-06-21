@@ -1,0 +1,58 @@
+{
+  "$meta": {
+    "brand": "ESPEFAWIS Global Nig Ltd",
+    "site": "https://www.espefawis.com",
+    "structure": "primitive -> semantic -> component"
+  },
+  "primitive": {
+    "color": {
+      "green": {
+        "50": "#F1F9F3", "100": "#E6F4E9", "300": "#9FE6A8", "400": "#5DC264",
+        "500": "#2E9447", "600": "#237A38", "700": "#1A5C2A", "800": "#134020", "900": "#0E3318"
+      },
+      "gold": { "100": "#F0EBD6", "300": "#D9CF9E", "500": "#A89548", "600": "#8B7D3A", "700": "#6E6230" },
+      "orange": { "100": "#FEF1D6", "300": "#FBD08A", "500": "#F5A623", "600": "#D98D12" },
+      "neutral": {
+        "white": "#FFFFFF", "50": "#F8F7F5", "100": "#F1F0ED", "200": "#E8E7E5",
+        "300": "#C9C7C3", "500": "#767676", "600": "#555555", "800": "#2C2C2C", "900": "#1A1A1A"
+      },
+      "status": { "success": "#2E9447", "warning": "#F5A623", "error": "#C0392B", "info": "#2D7DBB" }
+    },
+    "font": {
+      "heading": "'Merriweather', Georgia, serif",
+      "body": "'Inter', system-ui, sans-serif"
+    }
+  },
+  "semantic": {
+    "primary": "{green.700}",
+    "primaryHover": "{green.800}",
+    "primaryEmphasis": "{green.400}",
+    "onPrimary": "{neutral.white}",
+    "accent": "{gold.600}",
+    "cta": "{orange.500}",
+    "onCta": "{neutral.900}",
+    "bg": "{neutral.white}",
+    "bgSubtle": "{neutral.50}",
+    "bgInverse": "{green.700}",
+    "surface": "{neutral.white}",
+    "text": "{neutral.800}",
+    "textMuted": "{neutral.600}",
+    "textOnDark": "{neutral.white}",
+    "border": "{neutral.200}",
+    "ring": "{green.700}"
+  },
+  "typeScale": {
+    "display": "56px", "h1": "40px", "h2": "32px", "h3": "24px", "h4": "20px",
+    "lead": "18px", "base": "16px", "sm": "14px", "xs": "12px"
+  },
+  "spacing": { "1": "4px", "2": "8px", "3": "12px", "4": "16px", "6": "24px", "8": "32px", "12": "48px", "16": "64px", "24": "96px" },
+  "radius": { "sm": "6px", "md": "8px", "lg": "12px", "xl": "16px", "full": "9999px" },
+  "component": {
+    "button": {
+      "primary": { "bg": "{primary}", "bgHover": "{primaryHover}", "fg": "{onPrimary}" },
+      "cta": { "bg": "{cta}", "fg": "{onCta}" },
+      "radius": "{radius.md}"
+    },
+    "card": { "bg": "{surface}", "border": "{border}", "radius": "{radius.lg}" }
+  }
+}

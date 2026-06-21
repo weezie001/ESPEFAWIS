@@ -1,0 +1,140 @@
+/* =====================================================================
+   ESPEFAWIS Global Nig Ltd — Design Tokens
+   Single source of truth for brand + marketing assets.
+   Layers: Primitive -> Semantic -> Component
+   ===================================================================== */
+
+:root {
+  /* ---------- PRIMITIVE: Brand Green ---------- */
+  --color-green-50:  #F1F9F3;
+  --color-green-100: #E6F4E9;
+  --color-green-300: #9FE6A8;  /* light accent (on dark) */
+  --color-green-400: #5DC264;  /* bright highlight (hero) */
+  --color-green-500: #2E9447;
+  --color-green-600: #237A38;
+  --color-green-700: #1A5C2A;  /* BRAND PRIMARY */
+  --color-green-800: #134020;
+  --color-green-900: #0E3318;
+
+  /* ---------- PRIMITIVE: Brand Gold ---------- */
+  --color-gold-100: #F0EBD6;
+  --color-gold-300: #D9CF9E;
+  --color-gold-500: #A89548;
+  --color-gold-600: #8B7D3A;   /* BRAND ACCENT */
+  --color-gold-700: #6E6230;
+
+  /* ---------- PRIMITIVE: Brand Orange ---------- */
+  --color-orange-100: #FEF1D6;
+  --color-orange-300: #FBD08A;
+  --color-orange-500: #F5A623; /* BRAND HIGHLIGHT */
+  --color-orange-600: #D98D12;
+
+  /* ---------- PRIMITIVE: Neutrals ---------- */
+  --color-white:       #FFFFFF;
+  --color-neutral-50:  #F8F7F5;  /* brand light surface */
+  --color-neutral-100: #F1F0ED;
+  --color-neutral-200: #E8E7E5;  /* borders */
+  --color-neutral-300: #C9C7C3;
+  --color-neutral-500: #767676;
+  --color-neutral-600: #555555;
+  --color-neutral-800: #2C2C2C;  /* brand body text */
+  --color-neutral-900: #1A1A1A;
+
+  /* ---------- PRIMITIVE: Status ---------- */
+  --color-success: #2E9447;
+  --color-warning: #F5A623;
+  --color-error:   #C0392B;
+  --color-info:    #2D7DBB;
+
+  /* ---------- SEMANTIC ---------- */
+  --primary:            var(--color-green-700);
+  --primary-hover:      var(--color-green-800);
+  --primary-emphasis:   var(--color-green-400); /* highlight on dark bgs */
+  --on-primary:         var(--color-white);
+
+  --accent:             var(--color-gold-600);
+  --cta:                var(--color-orange-500); /* attention / promos */
+  --on-cta:             var(--color-neutral-900);
+
+  --bg:                 var(--color-white);
+  --bg-subtle:          var(--color-neutral-50);
+  --bg-inverse:         var(--color-green-700);
+  --surface:            var(--color-white);
+
+  --text:               var(--color-neutral-800);
+  --text-muted:         var(--color-neutral-600);
+  --text-on-dark:       var(--color-white);
+  --text-on-dark-muted: rgba(255, 255, 255, 0.82);
+
+  --border:             var(--color-neutral-200);
+  --ring:               var(--color-green-700);
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-heading: 'Merriweather', Georgia, serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+
+  --text-display: 3.5rem;   /* 56 */
+  --text-h1:      2.5rem;   /* 40 */
+  --text-h2:      2rem;     /* 32 */
+  --text-h3:      1.5rem;   /* 24 */
+  --text-h4:      1.25rem;  /* 20 */
+  --text-lead:    1.125rem; /* 18 */
+  --text-base:    1rem;     /* 16 */
+  --text-sm:      0.875rem; /* 14 */
+  --text-xs:      0.75rem;  /* 12 */
+
+  --leading-tight: 1.15;
+  --leading-snug:  1.3;
+  --leading-body:  1.6;
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+
+  /* ---------- SPACING (4px base) ---------- */
+  --space-1: 0.25rem;  /* 4  */
+  --space-2: 0.5rem;   /* 8  */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-6: 1.5rem;   /* 24 */
+  --space-8: 2rem;     /* 32 */
+  --space-12: 3rem;    /* 48 */
+  --space-16: 4rem;    /* 64 */
+  --space-24: 6rem;    /* 96 */
+
+  /* ---------- RADIUS ---------- */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ---------- ELEVATION ---------- */
+  --shadow-sm: 0 1px 2px rgba(16, 51, 24, 0.06), 0 1px 3px rgba(16, 51, 24, 0.08);
+  --shadow-md: 0 4px 12px rgba(16, 51, 24, 0.10);
+  --shadow-lg: 0 12px 32px rgba(16, 51, 24, 0.14);
+
+  /* ---------- COMPONENT: Button ---------- */
+  --button-primary-bg:       var(--primary);
+  --button-primary-bg-hover: var(--primary-hover);
+  --button-primary-fg:       var(--on-primary);
+  --button-cta-bg:           var(--cta);
+  --button-cta-fg:           var(--on-cta);
+  --button-radius:           var(--radius-md);
+  --button-pad-y:            var(--space-3);
+  --button-pad-x:            var(--space-6);
+
+  /* ---------- COMPONENT: Card ---------- */
+  --card-bg:     var(--surface);
+  --card-border: var(--border);
+  --card-radius: var(--radius-lg);
+  --card-shadow: var(--shadow-sm);
+  --card-pad:    var(--space-6);
+
+  /* ---------- COMPONENT: Section ---------- */
+  --section-pad-y:        var(--space-24);
+  --section-bg-default:   var(--bg);
+  --section-bg-alt:       var(--bg-subtle);
+  --section-bg-inverse:   var(--bg-inverse);
+}
