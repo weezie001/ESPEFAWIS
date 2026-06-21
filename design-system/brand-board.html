@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ESPEFAWIS — Brand Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --green:#1A5C2A; --green-bright:#5DC264; --gold:#8B7D3A; --orange:#F5A623;
+    --ink:#2C2C2C; --surface:#F8F7F5; --border:#E8E7E5; --white:#fff;
+    --serif:'Merriweather',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--sans);color:var(--ink);background:#EDEDED;line-height:1.6;padding:32px 16px;}
+  .board{max-width:1040px;margin:0 auto;background:var(--white);box-shadow:0 12px 40px rgba(0,0,0,.12);border-radius:16px;overflow:hidden;}
+  .pad{padding:40px;}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+  h1,h2,h3{font-family:var(--serif);font-weight:700;color:var(--ink);line-height:1.15;}
+  .muted{color:#555;}
+  /* Header */
+  header{background:var(--green);color:#fff;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  header img{height:84px;width:auto;background:#fff;border-radius:14px;padding:10px;}
+  header .tag{font-family:var(--serif);font-size:30px;color:#fff;}
+  header .sub{color:rgba(255,255,255,.85);margin-top:6px;}
+  .section{border-top:1px solid var(--border);}
+  .section h2{font-size:24px;margin-bottom:4px;}
+  .grid{display:grid;gap:16px;margin-top:22px;}
+  /* Colors */
+  .colors{grid-template-columns:repeat(3,1fr);}
+  .swatch{border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .swatch .chip{height:92px;}
+  .swatch .meta{padding:12px 14px;}
+  .swatch .name{font-weight:600;font-size:14px;}
+  .swatch .hex{font-family:ui-monospace,monospace;font-size:13px;color:#555;text-transform:uppercase;}
+  .swatch .use{font-size:12px;color:#777;margin-top:2px;}
+  /* Type */
+  .typerow{display:flex;align-items:baseline;gap:16px;border-bottom:1px dashed var(--border);padding:12px 0;flex-wrap:wrap;}
+  .typerow .lab{width:120px;font-size:12px;color:#777;font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
+  /* Buttons */
+  .btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px;}
+  .btn{padding:13px 26px;border-radius:8px;font-weight:600;font-size:15px;border:2px solid transparent;}
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-secondary{background:#fff;color:var(--green);border-color:var(--green);}
+  .btn-cta{background:var(--orange);color:#2C2C2C;}
+  /* Pillars */
+  .pillars{grid-template-columns:repeat(2,1fr);}
+  .pillar{border:1px solid var(--border);border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:18px 20px;background:var(--surface);}
+  .pillar h3{font-size:18px;margin-bottom:6px;color:var(--green);}
+  .pillar p{font-size:14px;color:#555;}
+  /* Imagery */
+  .photos{grid-template-columns:repeat(4,1fr);}
+  .photo{aspect-ratio:1;border-radius:12px;display:flex;align-items:flex-end;padding:12px;color:#fff;font-weight:600;font-size:13px;background-size:cover;background-position:center;position:relative;overflow:hidden;}
+  .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);}
+  .photo span{position:relative;z-index:1;}
+  footer{background:var(--ink);color:#fff;text-align:center;padding:22px;font-size:14px;}
+  footer a{color:var(--green-bright);text-decoration:none;}
+  @media(max-width:760px){.colors,.photos{grid-template-columns:repeat(2,1fr);}.pillars{grid-template-columns:1fr;}.pad{padding:26px;}}
+</style>
+</head>
+<body>
+<div class="board">
+  <header class="pad">
+    <img src="https://www.espefawis.com/logo.png" alt="ESPEFAWIS logo" />
+    <div>
+      <div class="eyebrow" style="color:#9FE6A8;">Brand Board</div>
+      <div class="tag">Bridging Farm &amp; Economy</div>
+      <div class="sub">ESPEFAWIS Global Nig Ltd · Agro‑allied supply‑chain solutions · espefawis.com</div>
+    </div>
+  </header>
+
+  <section class="section pad">
+    <div class="eyebrow">Color Palette</div>
+    <h2>The brand colors</h2>
+    <p class="muted">60% neutral · 30% green · 10% gold + orange accents.</p>
+    <div class="grid colors">
+      <div class="swatch"><div class="chip" style="background:#1A5C2A"></div><div class="meta"><div class="name">Primary — Green</div><div class="hex">#1A5C2A</div><div class="use">Headers, buttons, brand fills</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#5DC264"></div><div class="meta"><div class="name">Highlight — Bright green</div><div class="hex">#5DC264</div><div class="use">Emphasis words on dark</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#8B7D3A"></div><div class="meta"><div class="name">Accent — Gold</div><div class="hex">#8B7D3A</div><div class="use">Eyebrows, dividers</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#F5A623"></div><div class="meta"><div class="name">CTA — Orange</div><div class="hex">#F5A623</div><div class="use">Promos (dark text only)</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#2C2C2C"></div><div class="meta"><div class="name">Ink</div><div class="hex">#2C2C2C</div><div class="use">Body text</div></div></div>
+      <div class="swatch"><div class="chip" style="background:#F8F7F5;border-bottom:1px solid #E8E7E5"></div><div class="meta"><div class="name">Surface — Off‑white</div><div class="hex">#F8F7F5</div><div class="use">Alternating sections</div></div></div>
+    </div>
+  </section>
+
+  <section class="section pad">
+    <div class="eyebrow">Typography</div>
+    <h2>Merriweather + Inter</h2>
+    <div style="margin-top:18px;">
+      <div class="typerow"><div class="lab">Display</div><div style="font-family:var(--serif);font-size:44px;font-weight:700;">Quality, reliable supply</div></div>
+      <div class="typerow"><div class="lab">Heading</div><div style="font-family:var(--serif);font-size:28px;font-weight:700;">From farm to market</div></div>
+      <div class="typerow"><div class="lab">Body — Inter</div><div style="font-size:16px;max-width:560px;">We connect farmers to markets through integrated supply chain solutions that drive growth, reduce waste, and create lasting value.</div></div>
+      <div class="typerow"><div class="lab">Eyebrow</div><div class="eyebrow" style="font-size:13px;">Commodities We Handle</div></div>
+    </div>
+  </section>
+
+  <section class="section pad">
+    <div class="eyebrow">Components</div>
+    <h2>Buttons</h2>
+    <div class="btns">
+      <span class="btn btn-primary">Our Services →</span>
+      <span class="btn btn-secondary">Learn More</span>
+      <span class="btn btn-cta">Become a Partner</span>
+    </div>
+  </section>
+
+  <section class="section pad">
+    <div class="eyebrow">Messaging Pillars</div>
+    <h2>What every asset should say</h2>
+    <div class="grid pillars">
+      <div class="pillar"><h3>Bridging Farm &amp; Economy</h3><p>We connect farmers to markets and the wider economy.</p></div>
+      <div class="pillar"><h3>Reliability &amp; Quality</h3><p>Global‑standard, end‑to‑end, dependable supply.</p></div>
+      <div class="pillar"><h3>Sustainability &amp; Impact</h3><p>Long‑term value for people and the planet.</p></div>
+      <div class="pillar"><h3>Partnership &amp; Empowerment</h3><p>Collaboration with farmers, business, and government.</p></div>
+    </div>
+  </section>
+
+  <section class="section pad">
+    <div class="eyebrow">Photography Direction</div>
+    <h2>Authentic Nigerian agriculture</h2>
+    <p class="muted">Warm natural light · real farms, crops, livestock, logistics · green gradient overlay for text.</p>
+    <div class="grid photos">
+      <div class="photo" style="background-image:url('https://www.espefawis.com/images/gallery/02_farmer_harvest_basket.webp')"><span>Farmers</span></div>
+      <div class="photo" style="background-image:url('https://www.espefawis.com/images/gallery/01_maize_field_sunrise.webp')"><span>Crops</span></div>
+      <div class="photo" style="background-image:url('https://www.espefawis.com/images/gallery/05_livestock_cattle_field.webp')"><span>Livestock</span></div>
+      <div class="photo" style="background-image:url('https://www.espefawis.com/images/gallery/16_truck_fleet_logistics.webp')"><span>Logistics</span></div>
+    </div>
+  </section>
+
+  <footer>Bridging Farm &amp; Economy — <a href="https://www.espefawis.com">www.espefawis.com</a></footer>
+</div>
+</body>
+</html>
