@@ -27,7 +27,7 @@ const stagger = {
 const services = [
   {
     icon: Sprout,
-    img: '/images/gallery/02_farmer_harvest_basket.webp',
+    img: '/images/svc-procurement.webp',
     title: 'Procurement & Sourcing',
     desc: 'We help you source quality commodities directly from trusted farms at the best value.',
   },
@@ -45,7 +45,7 @@ const services = [
   },
   {
     icon: ShieldCheck,
-    img: '/images/gallery/15_food_processing_quality_control.webp',
+    img: '/images/svc-quality.webp',
     title: 'Quality Assurance & Control',
     desc: 'We maintain rigorous standards and testing across the entire value chain.',
   },
@@ -62,6 +62,9 @@ const commodities = [
   { name: 'Rice', img: '/images/gallery/07_rice_grains_closeup.webp' },
   { name: 'Maize', img: '/images/gallery/08_maize_kernels_closeup.webp' },
   { name: 'Cassava', img: '/images/gallery/09_cassava_roots_closeup.webp' },
+  { name: 'Plantain', img: '/images/com-plantain.webp' },
+  { name: 'Plantain Chips', img: '/images/com-plantain-chips.webp' },
+  { name: 'Plantain Powder', img: '/images/com-plantain-powder.webp' },
   { name: 'Sesame', img: '/images/gallery/10_sesame_seeds_closeup.webp' },
   { name: 'Cocoa', img: '/images/gallery/11_cocoa_pods_beans_closeup.webp' },
   { name: 'Cashew', img: '/images/gallery/12_cashew_nuts_closeup.webp' },
