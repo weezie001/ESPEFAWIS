@@ -58,7 +58,7 @@ const services = [
   },
   {
     icon: Store,
-    img: '/images/svc-market.webp',
+    img: '/images/showcase/16.webp',
     title: 'Market Access & Distribution',
     desc: 'We connect your products to reliable local and global markets.',
   },
@@ -84,10 +84,10 @@ const commodities = [
 
 const operations = [
   { img: '/images/ops-farming.webp', label: 'Farming' },
-  { img: '/images/ops-cultivation.webp', label: 'Cultivation' },
-  { img: '/images/ops-nursery.webp', label: 'Nursery' },
   { img: '/images/ops-harvest.webp', label: 'Harvest' },
-  { img: '/images/ops-processing.webp', label: 'Processing' },
+  { img: '/images/ops-nursery.webp', label: 'Warehouse' },
+  { img: '/images/ops-cultivation.webp', label: 'Logistics' },
+  { img: '/images/svc-quality.webp', label: 'Processing' },
   { img: '/images/ops-packaging.webp', label: 'Packaging' },
   { img: '/images/ops-market.webp', label: 'Market' },
 ];
