@@ -13,7 +13,7 @@ export default function WhyUs() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-neutral-900">
       <Navigation />
 
       {/* Hero Section */}
@@ -21,7 +21,7 @@ export default function WhyUs() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/images/gallery/26_farmer_cooperative_group.webp)',
+            backgroundImage: 'url(/images/showcase/08.webp)',
           }}
         >
           <div className="absolute inset-0 bg-black/40"></div>
@@ -89,12 +89,12 @@ export default function WhyUs() {
             ].map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="card-hover bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+                <div key={idx} className="card-hover bg-white dark:bg-neutral-900 p-8 rounded-lg shadow-sm border border-gray-100 dark:border-white/10">
                   <div className="mb-4 inline-block p-3 bg-primary/10 rounded-lg">
                     <Icon size={24} className="text-primary" />
                   </div>
                   <h3 className="text-lg font-merriweather font-bold mb-3">{item.title}</h3>
-                  <p className="text-sm text-gray-600">{item.description}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300">{item.description}</p>
                 </div>
               );
             })}
@@ -103,11 +103,11 @@ export default function WhyUs() {
       </section>
 
       {/* Comparison */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-neutral-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-merriweather font-bold mb-4">What Sets Us Apart</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               A comprehensive comparison of our approach versus traditional service providers
             </p>
           </div>
@@ -115,7 +115,7 @@ export default function WhyUs() {
           <div className="grid lg:grid-cols-5 gap-10 items-center">
             <div className="lg:col-span-2 relative rounded-2xl overflow-hidden shadow-lg h-72 lg:h-full lg:min-h-[420px]">
               <img
-                src="/images/gallery/24_corporate_partnership_meeting.webp"
+                src="/images/showcase/12.webp"
                 alt="ESPEFAWIS team in a working session"
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover"
@@ -125,9 +125,9 @@ export default function WhyUs() {
             <table className="w-full">
               <thead>
                 <tr className="border-b-2 border-primary">
-                  <th className="text-left py-4 px-4 font-merriweather font-bold text-gray-900">Feature</th>
+                  <th className="text-left py-4 px-4 font-merriweather font-bold text-gray-900 dark:text-white">Feature</th>
                   <th className="text-center py-4 px-4 font-semibold text-primary">ESPEFAWIS</th>
-                  <th className="text-center py-4 px-4 font-semibold text-gray-500">Traditional Providers</th>
+                  <th className="text-center py-4 px-4 font-semibold text-gray-500 dark:text-gray-400">Traditional Providers</th>
                 </tr>
               </thead>
               <tbody>
@@ -141,8 +141,8 @@ export default function WhyUs() {
                   { feature: 'Long-term Partnership', espefawis: true, traditional: false },
                   { feature: 'Continuous Support', espefawis: true, traditional: false },
                 ].map((row, idx) => (
-                  <tr key={idx} className="border-b border-gray-200 hover:bg-white">
-                    <td className="py-4 px-4 font-medium text-gray-900">{row.feature}</td>
+                  <tr key={idx} className="border-b border-gray-200 dark:border-white/10 hover:bg-white dark:bg-neutral-900">
+                    <td className="py-4 px-4 font-medium text-gray-900 dark:text-white">{row.feature}</td>
                     <td className="py-4 px-4 text-center">
                       {row.espefawis ? (
                         <span className="inline-block w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-sm">✓</span>
@@ -172,7 +172,7 @@ export default function WhyUs() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative rounded-2xl overflow-hidden shadow-lg h-80 lg:h-full lg:min-h-[440px] order-1 lg:order-none">
               <img
-                src="/images/gallery/02_farmer_harvest_basket.webp"
+                src="/images/showcase/04.webp"
                 alt="Harvesting crops — real impact on the ground"
                 loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover"
@@ -180,7 +180,7 @@ export default function WhyUs() {
             </div>
             <div>
               <h2 className="text-4xl font-merriweather font-bold mb-4">Client Success</h2>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
                 Real results from organizations we've partnered with
               </p>
               <div className="space-y-6">
@@ -189,9 +189,9 @@ export default function WhyUs() {
                   { metric: '60%', description: 'Reduction in asset downtime through predictive maintenance' },
                   { metric: '35%', description: 'Cost savings through optimized logistics and operations' },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-5 p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+                  <div key={idx} className="flex items-center gap-5 p-6 bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-gray-100 dark:border-white/10">
                     <div className="text-4xl font-bold text-primary flex-shrink-0 w-24">{item.metric}</div>
-                    <p className="text-gray-600">{item.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -208,7 +208,7 @@ export default function WhyUs() {
               <h2 className="text-4xl md:text-5xl font-merriweather font-bold mb-8 text-white drop-shadow-sm">Our Partnership Philosophy</h2>
               <div className="relative rounded-2xl overflow-hidden shadow-xl h-80">
                 <img
-                  src="/images/gallery/13_warehouse_partnership_handshake.webp"
+                  src="/images/showcase/23.webp"
                   alt="Partners shaking hands in Lagos"
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover"
@@ -253,7 +253,7 @@ export default function WhyUs() {
       <section className="py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-merriweather font-bold mb-6">Experience the ESPEFAWIS Difference</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Join organizations across Africa that are transforming their operations with our innovative solutions and dedicated partnership.
           </p>
           <Link href="/contact" className="btn-primary">

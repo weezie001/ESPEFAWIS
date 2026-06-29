@@ -14,36 +14,33 @@ const stagger = {
 };
 
 const images = [
-  { src: '/images/gallery/01_maize_field_sunrise.webp', alt: 'Maize field at sunrise' },
-  { src: '/images/gallery/02_farmer_harvest_basket.webp', alt: 'Farmer with a basket of fresh harvest' },
-  { src: '/images/gallery/03_tractor_crop_field.webp', alt: 'Tractor cultivating a crop field' },
-  { src: '/images/gallery/26_farmer_cooperative_group.webp', alt: 'Farmer cooperative group' },
-  { src: '/images/gallery/27_greenhouse_crop_production.webp', alt: 'Greenhouse crop production' },
-  { src: '/images/gallery/28_drip_irrigation_seedlings.webp', alt: 'Drip irrigation of seedlings' },
-  { src: '/images/gallery/29_solar_powered_agriculture.webp', alt: 'Solar-powered agriculture' },
-  { src: '/images/gallery/25_seedling_in_hands.webp', alt: 'A seedling held in hands' },
-  { src: '/images/gallery/05_livestock_cattle_field.webp', alt: 'Cattle on open pasture' },
-  { src: '/images/gallery/06_fresh_vegetables_assortment.webp', alt: 'Assortment of fresh vegetables' },
-  { src: '/images/gallery/30_quality_guaranteed_produce.webp', alt: 'Quality-guaranteed produce' },
-  { src: '/images/gallery/04_cocoa_cashew_commodities.webp', alt: 'Cocoa and cashew commodities' },
-  { src: '/images/gallery/07_rice_grains_closeup.webp', alt: 'Close-up of rice grains' },
-  { src: '/images/gallery/08_maize_kernels_closeup.webp', alt: 'Close-up of maize kernels' },
-  { src: '/images/gallery/09_cassava_roots_closeup.webp', alt: 'Close-up of cassava roots' },
-  { src: '/images/gallery/10_sesame_seeds_closeup.webp', alt: 'Close-up of sesame seeds' },
-  { src: '/images/gallery/11_cocoa_pods_beans_closeup.webp', alt: 'Close-up of cocoa pods and beans' },
-  { src: '/images/gallery/12_cashew_nuts_closeup.webp', alt: 'Close-up of cashew nuts' },
-  { src: '/images/gallery/15_food_processing_quality_control.webp', alt: 'Food processing and quality control' },
-  { src: '/images/gallery/13_warehouse_partnership_handshake.webp', alt: 'Partnership handshake at a warehouse' },
-  { src: '/images/gallery/14_warehouse_storage_forklift.webp', alt: 'Forklift in a storage warehouse' },
-  { src: '/images/gallery/17_warehouse_pallet_operations.webp', alt: 'Pallet operations in a warehouse' },
-  { src: '/images/gallery/16_truck_fleet_logistics.webp', alt: 'Truck fleet logistics' },
-  { src: '/images/gallery/20_road_freight_delivery_truck.webp', alt: 'Road freight delivery truck' },
-  { src: '/images/gallery/21_cargo_ship_export_logistics.webp', alt: 'Cargo ship export logistics' },
-  { src: '/images/gallery/22_port_terminal_containers.webp', alt: 'Port terminal containers' },
-  { src: '/images/gallery/23_air_cargo_export_loading.webp', alt: 'Air cargo export loading' },
-  { src: '/images/gallery/18_supply_chain_dashboard_tablet.webp', alt: 'Supply chain dashboard on a tablet' },
-  { src: '/images/gallery/19_mobile_agri_dashboard.webp', alt: 'Mobile agriculture dashboard' },
-  { src: '/images/gallery/24_corporate_partnership_meeting.webp', alt: 'Corporate partnership meeting' },
+  { src: '/images/showcase/01.webp', alt: 'Hands holding a young seedling in soil' },
+  { src: '/images/showcase/04.webp', alt: 'Farmers with fresh plantains' },
+  { src: '/images/showcase/03.webp', alt: 'Plantain stall at the market' },
+  { src: '/images/showcase/05.webp', alt: 'Tractor cultivating a field' },
+  { src: '/images/showcase/07.webp', alt: 'Greenhouse crop production' },
+  { src: '/images/showcase/10.webp', alt: 'Workers in the plantain field' },
+  { src: '/images/showcase/08.webp', alt: 'The ESPEFAWIS team in the field' },
+  { src: '/images/showcase/06.webp', alt: 'Busy produce market' },
+  { src: '/images/showcase/11.webp', alt: 'Foodstuff and grains at the market' },
+  { src: '/images/showcase/09.webp', alt: 'Cashew and nut processing' },
+  { src: '/images/showcase/21.webp', alt: 'Bagged produce ready for distribution' },
+  { src: '/images/showcase/17.webp', alt: 'Products on retail shelves' },
+  { src: '/images/showcase/20.webp', alt: 'Plantain chips' },
+  { src: '/images/showcase/14.webp', alt: 'ESPEFAWIS plantain products' },
+  { src: '/images/showcase/15.webp', alt: 'ESPEFAWIS plantain flour packaging' },
+  { src: '/images/showcase/19.webp', alt: 'ESPEFAWIS plantain flour' },
+  { src: '/images/showcase/16.webp', alt: 'Premium quality product range' },
+  { src: '/images/showcase/18.webp', alt: 'ESPEFAWIS product display' },
+  { src: '/images/showcase/02.webp', alt: 'Commodities we handle' },
+  { src: '/images/showcase/12.webp', alt: 'ESPEFAWIS at a trade exhibition' },
+  { src: '/images/showcase/13.webp', alt: 'ESPEFAWIS product banner' },
+  { src: '/images/showcase/22.webp', alt: 'Partnership at an exhibition stand' },
+  { src: '/images/showcase/23.webp', alt: 'The ESPEFAWIS team at an exhibition' },
+  { src: '/images/showcase/24.webp', alt: 'ESPEFAWIS value-chain overview' },
+  { src: '/images/showcase/25.webp', alt: 'Young crops in the field' },
+  { src: '/images/showcase/26.webp', alt: 'Maize field' },
+  { src: '/images/showcase/27.webp', alt: 'Plantain plantation' },
 ];
 
 export default function Gallery() {
@@ -55,12 +52,12 @@ export default function Gallery() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-neutral-900">
       <Navigation />
 
       {/* Hero */}
       <section className="relative h-72 md:h-80 flex items-center justify-center overflow-hidden">
-        <img src="/images/gallery/01_maize_field_sunrise.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="/images/showcase/27.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/55" />
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
           <h1 className="text-5xl md:text-6xl font-merriweather font-bold drop-shadow-lg text-white">Our Gallery</h1>
@@ -80,7 +77,7 @@ export default function Gallery() {
           >
             <span className="text-accent font-semibold uppercase tracking-wide text-sm">A Closer Look</span>
             <h2 className="mt-2 mb-4">Inside the ESPEFAWIS Value Chain</h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               Every image tells part of our story — from the farms and crops we nurture, to the
               commodities we source, the facilities where we process and store them, and the
               logistics and partnerships that move quality produce to markets at home and abroad.

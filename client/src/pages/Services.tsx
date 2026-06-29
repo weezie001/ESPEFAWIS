@@ -25,7 +25,7 @@ export default function Services() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-neutral-900">
       <Navigation />
 
       {/* Hero Section */}
@@ -33,7 +33,7 @@ export default function Services() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/images/gallery/03_tractor_crop_field.webp)',
+            backgroundImage: 'url(/images/showcase/05.webp)',
           }}
         >
           <div className="absolute inset-0 bg-black/40"></div>
@@ -51,7 +51,7 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <img
-                src="/images/gallery/16_truck_fleet_logistics.webp"
+                src="/images/svc-supply.webp"
                 alt="Packing harvested rice for distribution"
                 loading="lazy"
                 className="rounded-lg shadow-lg w-full object-cover aspect-[4/3]"
@@ -59,7 +59,7 @@ export default function Services() {
             </div>
             <div>
               <h2 className="text-4xl font-merriweather font-bold mb-6">Supply Chain Solutions</h2>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                 We design and implement end-to-end supply chain systems that connect farmers to markets efficiently and profitably. Our integrated approach ensures product quality, reduces waste, and maximizes value at every stage.
               </p>
 
@@ -74,7 +74,7 @@ export default function Services() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex gap-3 items-start">
                     <CheckCircle2 size={20} className="text-primary flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">{item}</span>
+                    <span className="text-gray-700 dark:text-gray-200">{item}</span>
                   </div>
                 ))}
               </div>
@@ -88,12 +88,12 @@ export default function Services() {
       </section>
 
       {/* Asset Management */}
-      <section id="asset-management" className="py-20 bg-gray-50 scroll-mt-20">
+      <section id="asset-management" className="py-20 bg-gray-50 dark:bg-neutral-900 scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               <h2 className="text-4xl font-merriweather font-bold mb-6">Asset Management</h2>
-              <p className="text-gray-600 mb-6 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                 Maximize the performance and longevity of your agricultural equipment and resources. We provide comprehensive asset management services that ensure optimal utilization, reduce downtime, and extend asset lifespan.
               </p>
 
@@ -108,7 +108,7 @@ export default function Services() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex gap-3 items-start">
                     <CheckCircle2 size={20} className="text-accent flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">{item}</span>
+                    <span className="text-gray-700 dark:text-gray-200">{item}</span>
                   </div>
                 ))}
               </div>
@@ -134,7 +134,7 @@ export default function Services() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-merriweather font-bold mb-4">Additional Services</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Beyond our core offerings, we provide specialized consulting and support services
             </p>
           </div>
@@ -166,9 +166,9 @@ export default function Services() {
                 description: 'Guidance on implementing sustainable practices that enhance productivity while protecting the environment.',
               },
             ].map((service, idx) => (
-              <div key={idx} className="card-hover bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+              <div key={idx} className="card-hover bg-white dark:bg-neutral-900 p-8 rounded-lg shadow-sm border border-gray-100 dark:border-white/10">
                 <h3 className="text-xl font-merriweather font-bold mb-3 text-primary">{service.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{service.description}</p>
               </div>
             ))}
           </div>
@@ -206,7 +206,7 @@ export default function Services() {
       <section className="py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-merriweather font-bold mb-6">Ready to Transform Your Operations?</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Contact our team to discuss which services are right for your organization and how we can help you achieve your goals.
           </p>
           <Link href="/contact" className="btn-primary">

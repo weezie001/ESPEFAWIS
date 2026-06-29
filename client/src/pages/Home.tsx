@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import {
   ArrowRight,
@@ -24,6 +25,12 @@ const stagger = {
   visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
 };
 
+const heroSlides = [
+  '/images/hero-1.webp',
+  '/images/hero-2.webp',
+  '/images/hero-3.webp',
+];
+
 const services = [
   {
     icon: Sprout,
@@ -33,13 +40,13 @@ const services = [
   },
   {
     icon: Truck,
-    img: '/images/gallery/16_truck_fleet_logistics.webp',
+    img: '/images/svc-supply.webp',
     title: 'Supply Chain Management',
     desc: 'Efficient systems that ensure seamless movement, traceability, and on-time delivery.',
   },
   {
     icon: Warehouse,
-    img: '/images/gallery/14_warehouse_storage_forklift.webp',
+    img: '/images/svc-warehousing.webp',
     title: 'Warehousing & Storage',
     desc: 'Safe, modern, and efficient storage that preserves quality at every stage.',
   },
@@ -51,7 +58,7 @@ const services = [
   },
   {
     icon: Store,
-    img: '/images/gallery/22_port_terminal_containers.webp',
+    img: '/images/svc-market.webp',
     title: 'Market Access & Distribution',
     desc: 'We connect your products to reliable local and global markets.',
   },
@@ -76,20 +83,19 @@ const commodities = [
 ];
 
 const operations = [
-  { img: '/images/ops-farmer.webp', label: 'Farming' },
-  { img: '/images/ops-tractor.webp', label: 'Cultivation' },
+  { img: '/images/ops-farming.webp', label: 'Farming' },
+  { img: '/images/ops-cultivation.webp', label: 'Cultivation' },
+  { img: '/images/ops-nursery.webp', label: 'Nursery' },
+  { img: '/images/ops-harvest.webp', label: 'Harvest' },
   { img: '/images/ops-processing.webp', label: 'Processing' },
-  { img: '/images/ops-warehouse.webp', label: 'Warehousing' },
-  { img: '/images/ops-truck.webp', label: 'Logistics' },
-  { img: '/images/ops-port.webp', label: 'Export' },
+  { img: '/images/ops-packaging.webp', label: 'Packaging' },
   { img: '/images/ops-market.webp', label: 'Market' },
 ];
 
-// Featured 3 images shown on the homepage gallery preview.
 const homeGallery = [
-  { src: '/images/gallery/12_cashew_nuts_closeup.webp', alt: 'Close-up of cashew nuts' },
-  { src: '/images/gallery/30_quality_guaranteed_produce.webp', alt: 'Quality-guaranteed produce' },
-  { src: '/images/gallery/20_road_freight_delivery_truck.webp', alt: 'Courier delivery truck' },
+  { src: '/images/showcase/14.webp', alt: 'ESPEFAWIS plantain products' },
+  { src: '/images/showcase/11.webp', alt: 'Foodstuff at the market' },
+  { src: '/images/showcase/08.webp', alt: 'Our team in the field' },
 ];
 
 export default function Home() {
@@ -98,20 +104,35 @@ export default function Home() {
     description:
       'ESPEFAWIS Global Nig Ltd is a premier agro-allied and multi-sector solutions firm connecting Nigerian farmers to markets through integrated, sustainable supply chain solutions.',
     path: '/',
-    image: 'https://www.espefawis.com/images/hero-desktop.webp',
+    image: 'https://www.espefawis.com/images/hero-1.webp',
   });
 
+  const [slide, setSlide] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(() => setSlide((s) => (s + 1) % heroSlides.length), 5000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-neutral-950">
       <Navigation />
 
-      {/* ===== HERO ===== */}
+      {/* ===== HERO (auto-slide carousel) ===== */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <picture>
-            <source media="(max-width: 767px)" srcSet="/images/hero-mobile.webp" />
-            <img src="/images/hero-desktop.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
-          </picture>
+          {heroSlides.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              aria-hidden={i !== slide}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                i === slide ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/65" />
         </div>
 
@@ -148,11 +169,25 @@ export default function Home() {
               </Link>
             </motion.div>
           </motion.div>
+
+          {/* Slide indicators */}
+          <div className="relative z-10 mt-12 flex justify-center gap-2.5">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setSlide(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  i === slide ? 'w-8 bg-white' : 'w-2.5 bg-white/50 hover:bg-white/80'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ===== ABOUT (below hero) ===== */}
-      <section className="py-20 lg:py-24 bg-white overflow-hidden">
+      <section className="py-20 lg:py-24 bg-white dark:bg-neutral-950 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div
@@ -164,12 +199,12 @@ export default function Home() {
             >
               <span className="text-accent font-semibold tracking-wide text-sm uppercase">About Us</span>
               <h2 className="mt-2 mb-5">Bridging the Gap Between the Farm and the Wider Economy</h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
                 ESPEFAWIS Global Nig Ltd is a premier agro-allied and multi-sector solutions firm
                 committed to transforming Nigeria's agricultural value chains through innovation,
                 integrity, and excellence.
               </p>
-              <p className="text-gray-600 leading-relaxed mb-8">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
                 From the farm to the wider economy, we build dependable supply chains that create
                 lasting value for farmers, businesses, and the communities we serve.
               </p>
@@ -187,7 +222,7 @@ export default function Home() {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/gallery/25_seedling_in_hands.webp"
+                  src="/images/about-seedling.webp"
                   alt="Hands holding a young seedling in soil"
                   className="w-full object-cover aspect-[4/3] hover:scale-105 transition-transform duration-700"
                 />
@@ -198,7 +233,7 @@ export default function Home() {
       </section>
 
       {/* ===== SERVICES ===== */}
-      <section className="py-20 lg:py-24 bg-white overflow-hidden">
+      <section className="py-20 lg:py-24 bg-gray-50 dark:bg-neutral-900 overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -228,7 +263,7 @@ export default function Home() {
                 <motion.div
                   variants={fadeUp}
                   key={s.title}
-                  className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                  className="group bg-white dark:bg-neutral-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-white/10 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                 >
                   <div className="relative h-40 overflow-hidden">
                     <img
@@ -243,7 +278,7 @@ export default function Home() {
                   </div>
                   <div className="p-5 pt-7">
                     <h3 className="text-base font-merriweather font-bold mb-2 leading-snug">{s.title}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{s.desc}</p>
                   </div>
                 </motion.div>
               );
@@ -265,7 +300,7 @@ export default function Home() {
       </section>
 
       {/* ===== FEATURE BAND: Why / Commodities / Partnership ===== */}
-      <section className="py-20 lg:py-24 bg-gray-50 overflow-hidden">
+      <section className="py-20 lg:py-24 bg-white dark:bg-neutral-950 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Why Choose */}
@@ -276,7 +311,7 @@ export default function Home() {
               variants={fadeUp}
               className="relative rounded-2xl overflow-hidden min-h-[420px] flex"
             >
-              <img src="/images/gallery/26_farmer_cooperative_group.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              <img src="/images/showcase/08.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/45" />
               <div className="relative z-10 p-7 flex flex-col justify-end text-white">
                 <span className="text-[#9FE6A8] font-semibold uppercase tracking-wide text-xs">Why Choose ESPEFAWIS</span>
@@ -338,7 +373,7 @@ export default function Home() {
               variants={fadeUp}
               className="relative rounded-2xl overflow-hidden min-h-[420px] flex"
             >
-              <img src="/images/gallery/24_corporate_partnership_meeting.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              <img src="/images/showcase/23.webp" alt="" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/45" />
               <div className="relative z-10 p-7 flex flex-col justify-end text-white">
                 <span className="text-[#9FE6A8] font-semibold uppercase tracking-wide text-xs">Partnerships</span>
@@ -362,7 +397,7 @@ export default function Home() {
       </section>
 
       {/* ===== OPERATIONS STRIP ===== */}
-      <section className="py-20 lg:py-24 bg-white overflow-hidden">
+      <section className="py-20 lg:py-24 bg-gray-50 dark:bg-neutral-900 overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -405,7 +440,7 @@ export default function Home() {
       </section>
 
       {/* ===== GALLERY ===== */}
-      <section className="py-20 lg:py-24 bg-gray-50 overflow-hidden">
+      <section className="py-20 lg:py-24 bg-white dark:bg-neutral-950 overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -415,7 +450,7 @@ export default function Home() {
             className="section-heading mb-12"
           >
             <h2>Our Gallery</h2>
-            <p>A closer look at our operations, facilities, and the value chain we power.</p>
+            <p>A closer look at our operations, products, and the value chain we power.</p>
           </motion.div>
 
           <motion.div
@@ -449,6 +484,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* ===== CTA ===== */}
       <section className="py-20 lg:py-24 bg-primary text-white overflow-hidden">
         <motion.div

@@ -29,7 +29,7 @@ export default function About() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-neutral-900">
       <Navigation />
 
       {/* Hero Section */}
@@ -62,10 +62,10 @@ export default function About() {
               variants={staggerContainer}
             >
               <motion.h2 variants={fadeInUp} className="text-4xl font-merriweather font-bold mb-6">Who We Are</motion.h2>
-              <motion.p variants={fadeInUp} className="text-gray-600 mb-4 leading-relaxed">
+              <motion.p variants={fadeInUp} className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                 We are a premier agro-allied and multi sector solutions firm. Our mission is to bridge the gap between the farm and the wider economy. We combine innovation with nature, building supply chains that makes food security thrive.
               </motion.p>
-              <motion.p variants={fadeInUp} className="text-gray-600 mb-6 leading-relaxed">
+              <motion.p variants={fadeInUp} className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                 With a future focused mindset, we provide reliable services that meet global standards, ensuring that whether we are growing crops and managing assets, we are cultivating long term value for our clients and our country.
               </motion.p>
               <motion.div variants={fadeInUp}>
@@ -76,7 +76,7 @@ export default function About() {
             </motion.div>
             <div>
               <img
-                src="/images/gallery/25_seedling_in_hands.webp"
+                src="/images/about-seedling.webp"
                 alt="ESPEFAWIS — nurturing crops in the field"
                 loading="lazy"
                 className="rounded-lg shadow-lg w-full object-cover aspect-[4/3]"
@@ -87,20 +87,20 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-neutral-900">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-white p-10 rounded-lg shadow-sm">
+            <div className="bg-white dark:bg-neutral-900 p-10 rounded-lg shadow-sm">
               <div className="w-12 h-1 bg-accent rounded-full mb-6"></div>
               <h3 className="text-2xl font-merriweather font-bold mb-4">Our Mission</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 To bridge the gap between the farm and the wider economy by providing innovative, reliable, and globally-standard agro-allied solutions that enhance food security, create sustainable supply chains, and generate long-term value for our clients and communities.
               </p>
             </div>
-            <div className="bg-white p-10 rounded-lg shadow-sm">
+            <div className="bg-white dark:bg-neutral-900 p-10 rounded-lg shadow-sm">
               <div className="w-12 h-1 bg-primary rounded-full mb-6"></div>
               <h3 className="text-2xl font-merriweather font-bold mb-4">Our Vision</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 To be the leading agro-allied solutions provider in Africa, recognized for our commitment to innovation, sustainability, and excellence. We envision a future where agricultural productivity and economic prosperity are interconnected through intelligent systems and strategic partnerships.
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-merriweather font-bold mb-4">Our Core Values</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               These principles guide every decision we make and every solution we deliver
             </p>
           </div>
@@ -128,12 +128,12 @@ export default function About() {
             {[
               {
                 title: 'Innovation',
-                image: '/images/gallery/18_supply_chain_dashboard_tablet.webp',
+                image: '/images/showcase/24.webp',
                 description: 'We continuously seek new technologies and methodologies to solve agricultural challenges and create competitive advantages for our clients.',
               },
               {
                 title: 'Integrity',
-                image: '/images/gallery/13_warehouse_partnership_handshake.webp',
+                image: '/images/showcase/22.webp',
                 description: 'We operate with transparency, honesty, and ethical standards in all our business dealings and partnerships.',
               },
               {
@@ -143,24 +143,24 @@ export default function About() {
               },
               {
                 title: 'Sustainability',
-                image: '/images/gallery/29_solar_powered_agriculture.webp',
+                image: '/images/showcase/07.webp',
                 description: 'We prioritize environmental responsibility and long-term viability in all our operations and recommendations.',
               },
               {
                 title: 'Partnership',
-                image: '/images/gallery/24_corporate_partnership_meeting.webp',
+                image: '/images/showcase/23.webp',
                 description: 'We believe in collaborative relationships that create mutual value and shared success with our clients and stakeholders.',
               },
               {
                 title: 'Impact',
-                image: '/images/gallery/26_farmer_cooperative_group.webp',
+                image: '/images/showcase/10.webp',
                 description: 'We measure success by the positive impact we create for farmers, businesses, and communities we serve.',
               },
             ].map((value, idx) => (
               <motion.div
                 key={idx}
                 variants={fadeInUp}
-                className="card-hover bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col"
+                className="card-hover bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-gray-100 dark:border-white/10 overflow-hidden flex flex-col"
               >
                 <div className="relative h-48 overflow-hidden group">
                   <img
@@ -172,7 +172,7 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <h4 className="absolute bottom-4 left-5 text-xl font-merriweather font-bold text-white drop-shadow">{value.title}</h4>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed p-6">{value.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed p-6">{value.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -213,7 +213,7 @@ export default function About() {
       <section className="py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-merriweather font-bold mb-6">Let's Build Something Great Together</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Connect with our team to explore how ESPEFAWIS can drive growth and innovation in your organization.
           </p>
           <Link href="/contact" className="btn-primary">

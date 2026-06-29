@@ -66,7 +66,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-neutral-900">
       <Navigation />
 
       {/* Hero Section */}
@@ -74,7 +74,7 @@ export default function Contact() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/images/gallery/24_corporate_partnership_meeting.webp)',
+            backgroundImage: 'url(/images/showcase/22.webp)',
           }}
         >
           <div className="absolute inset-0 bg-black/40"></div>
@@ -127,13 +127,13 @@ export default function Contact() {
                   href={item.link}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  className="card-hover bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center no-underline"
+                  className="card-hover bg-white dark:bg-neutral-900 p-8 rounded-lg shadow-sm border border-gray-100 dark:border-white/10 text-center no-underline"
                 >
                   <div className="mb-4 inline-block p-4 bg-primary/10 rounded-lg">
                     <Icon size={32} className="text-primary" />
                   </div>
-                  <h3 className="text-lg font-merriweather font-bold mb-2 text-gray-900">{item.title}</h3>
-                  <p className="text-gray-600">{item.content}</p>
+                  <h3 className="text-lg font-merriweather font-bold mb-2 text-gray-900 dark:text-white">{item.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{item.content}</p>
                 </a>
               );
             })}
@@ -160,7 +160,7 @@ export default function Contact() {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label htmlFor="name" className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
                     Full Name *
                   </label>
                   <input
@@ -170,14 +170,14 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-white/15 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Your name"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label htmlFor="email" className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
                       Email *
                     </label>
                     <input
@@ -187,12 +187,12 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-white/15 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="your@email.com"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
+                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
                       Phone
                     </label>
                     <input
@@ -201,14 +201,14 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-white/15 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                       placeholder="07037785676"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label htmlFor="company" className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
                     Company/Organization
                   </label>
                   <input
@@ -217,13 +217,13 @@ export default function Contact() {
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-white/15 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Your company name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label htmlFor="subject" className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
                     Subject *
                   </label>
                   <select
@@ -232,7 +232,7 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-white/15 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option value="">Select a subject</option>
                     <option value="supply-chain">Supply Chain Solutions</option>
@@ -244,7 +244,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-900 dark:text-white mb-2">
                     Message *
                   </label>
                   <textarea
@@ -254,7 +254,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-white/15 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                     placeholder="Tell us about your needs and how we can help..."
                   ></textarea>
                 </div>
@@ -275,19 +275,19 @@ export default function Contact() {
 
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Business Hours</h3>
-                  <p className="text-gray-600 mb-2">Monday - Friday: 9:00 AM - 5:00 PM</p>
-                  <p className="text-gray-600">Saturday - Sunday: Closed</p>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Business Hours</h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-2">Monday - Friday: 9:00 AM - 5:00 PM</p>
+                  <p className="text-gray-600 dark:text-gray-300">Saturday - Sunday: Closed</p>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow Us</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Follow Us</h3>
                   <div className="flex gap-4">
                     <a
                       href="https://www.facebook.com/share/1BnzuqFk9r/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-gray-100 rounded-lg hover:bg-primary hover:text-white transition-colors"
+                      className="p-3 bg-gray-100 dark:bg-neutral-800 rounded-lg hover:bg-primary hover:text-white transition-colors"
                     >
                       <Facebook size={24} />
                     </a>
@@ -295,7 +295,7 @@ export default function Contact() {
                       href="https://www.instagram.com/espefawis__global?igsh=MWUyczlwbndzMXU3ag=="
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-gray-100 rounded-lg hover:bg-primary hover:text-white transition-colors"
+                      className="p-3 bg-gray-100 dark:bg-neutral-800 rounded-lg hover:bg-primary hover:text-white transition-colors"
                     >
                       <Instagram size={24} />
                     </a>
@@ -303,8 +303,8 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">What to Expect</h3>
-                  <ul className="space-y-3 text-gray-600">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">What to Expect</h3>
+                  <ul className="space-y-3 text-gray-600 dark:text-gray-300">
                     <li className="flex gap-3 items-start">
                       <span className="text-primary font-bold">✓</span>
                       <span>Quick response to your inquiry</span>
@@ -330,11 +330,11 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-neutral-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-merriweather font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-600">Quick answers to common questions</p>
+            <p className="text-lg text-gray-600 dark:text-gray-300">Quick answers to common questions</p>
           </div>
 
           <div className="max-w-3xl mx-auto space-y-6">
@@ -356,9 +356,9 @@ export default function Contact() {
                 a: 'We maintain strict quality standards, conduct regular audits, and ensure compliance with international best practices and local regulations.',
               },
             ].map((item, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{item.q}</h3>
-                <p className="text-gray-600">{item.a}</p>
+              <div key={idx} className="bg-white dark:bg-neutral-900 p-6 rounded-lg shadow-sm border border-gray-100 dark:border-white/10">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">{item.q}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{item.a}</p>
               </div>
             ))}
           </div>

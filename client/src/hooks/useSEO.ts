@@ -41,7 +41,7 @@ export function useSEO({ title, description, path, image }: SEOOptions) {
   useEffect(() => {
     const fullTitle = `${title} | ${SITE_NAME}`;
     const url = `${SITE_URL}${path}`;
-    const ogImage = image || `${SITE_URL}/images/hero-desktop.webp`;
+    const ogImage = image || `${SITE_URL}/images/hero-1.webp`;
 
     document.title = fullTitle;
     setMeta('name', 'description', description);

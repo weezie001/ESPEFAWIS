@@ -41,12 +41,12 @@ export default function CookieConsent() {
           className="fixed bottom-0 left-0 right-0 z-[100] p-4"
         >
           <div className="container mx-auto">
-            <div className="bg-white border border-gray-200 shadow-2xl rounded-xl p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+            <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-white/10 shadow-2xl rounded-xl p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
               <div className="flex items-start gap-3 flex-1">
                 <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
                   <Cookie size={22} className="text-primary" />
                 </div>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                   We use cookies to enhance your browsing experience, analyse site traffic, and improve
                   our services. By clicking "Accept", you consent to our use of cookies. Read our{' '}
                   <Link href="/cookies" className="text-primary font-medium underline underline-offset-2">
@@ -60,7 +60,7 @@ export default function CookieConsent() {
                 <button
                   type="button"
                   onClick={() => setConsent('declined')}
-                  className="px-5 py-2.5 text-sm font-semibold text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+                  className="px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-200 border border-gray-300 dark:border-white/15 rounded-md hover:bg-gray-50 dark:bg-neutral-900 transition-colors"
                 >
                   Decline
                 </button>
@@ -75,7 +75,7 @@ export default function CookieConsent() {
                   type="button"
                   onClick={() => setConsent('declined')}
                   aria-label="Close cookie banner"
-                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md transition-colors md:hidden"
+                  className="p-2 text-gray-400 hover:text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:bg-neutral-800 rounded-md transition-colors md:hidden"
                 >
                   <X size={18} />
                 </button>

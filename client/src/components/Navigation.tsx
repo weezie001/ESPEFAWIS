@@ -1,6 +1,20 @@
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
+import { useTheme } from '@/contexts/ThemeContext';
+
+function ThemeToggle({ className = '' }: { className?: string }) {
+  const { theme, toggleTheme } = useTheme();
+  return (
+    <button
+      onClick={() => toggleTheme?.()}
+      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      className={`p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors ${className}`}
+    >
+      {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+    </button>
+  );
+}
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +33,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <nav className="sticky top-0 z-50 bg-white dark:bg-neutral-900 border-b border-gray-200 dark:border-white/10 shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -36,7 +50,7 @@ export default function Navigation() {
                 className={`relative text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:bg-primary after:transition-all ${
                   isActive(item.href)
                     ? 'text-primary font-semibold after:w-full'
-                    : 'text-gray-700 hover:text-primary after:w-0 hover:after:w-full'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-primary after:w-0 hover:after:w-full'
                 }`}
               >
                 {item.label}
@@ -44,26 +58,25 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Link href="/contact" className="btn-primary">
+          {/* Right cluster: theme toggle (before Get Started) + CTA + mobile menu */}
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Link href="/contact" className="btn-primary hidden lg:inline-flex">
               Get Started
             </Link>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+              className="lg:hidden p-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="lg:hidden border-t border-gray-200 py-4 space-y-3">
+          <div className="lg:hidden border-t border-gray-200 dark:border-white/10 py-4 space-y-3">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -71,7 +84,7 @@ export default function Navigation() {
                 className={`block px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                   isActive(item.href)
                     ? 'text-primary font-semibold bg-primary/5'
-                    : 'text-gray-700 hover:bg-gray-50'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5'
                 }`}
                 onClick={() => setIsOpen(false)}
               >
